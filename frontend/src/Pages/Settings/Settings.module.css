@@ -1,0 +1,28 @@
+.settingButton {
+    transition: .3s;
+    background-color: var(--mantine-color-gray-2)!important;
+
+    &:hover {
+        background-color: var(--mantine-color-gray-3)!important;
+        transition: .3s;
+    }
+
+    &:active {
+        background-color: var(--mantine-color-gray-3)!important;
+        transition: .3s;
+    }
+
+    @mixin dark {
+        background-color: var(--mantine-color-gray-9)!important;
+
+        &:hover {
+            background-color: var(--mantine-color-gray-8)!important;
+            transition: .3s;
+        }
+
+        &:active {
+            background-color: var(--mantine-color-gray-7)!important;
+            transition: .3s;
+        }
+    }
+}

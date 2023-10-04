@@ -1,0 +1,20 @@
+html {
+    height: 100%;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    width: 600px;
+    max-width: 600px;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        width: 410px !important;
+        max-width: 410px !important;
+    }
+}
+
+body {
+    width: 100%;
+    padding-right: .1px;
+}

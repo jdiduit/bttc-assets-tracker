@@ -1,0 +1,42 @@
+.mintLayoutWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @mixin dark {
+        border: 1px solid var(--mantine-color-default-border);
+    }
+
+    @mixin light {
+        border: 1px solid var(--mantine-color-default-border);
+    }
+}
+
+.toggleChainRoot {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+    box-shadow: var(--mantine-shadow-md);
+    border: rem(1px) solid light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-4));
+}
+
+.toggleChainIndicator {
+    background-image: linear-gradient(
+            to right,
+            var(--mantine-color-pink-filled),
+            var(--mantine-color-orange-filled)
+    );
+}
+
+.toggleChainControl {
+    &::before {
+        display: none;
+    }
+}
+
+.toggleChainLabel {
+    &,
+    &:hover {
+        &[data-active] {
+            color: var(--mantine-color-white);
+        }
+    }
+}

@@ -1,0 +1,15 @@
+export enum RoutePaths {
+    ROOT = '/',
+    LOGIN = '/login',
+    REGISTER = '/register',
+    NFTS = '/nfts',
+    NFT = '/nft',
+    SETTINGS = '/settings',
+    SAVED_ADDRESSES = '/saved-addresses',
+    CHANGE_NETWORK = '/change-network',
+    EMPTY = '',
+    BALANCE = '/balance',
+    TOKENS = '/tokens',
+    MINT = '/nfts/mint',
+    NOT_FOUND = '*',
+}

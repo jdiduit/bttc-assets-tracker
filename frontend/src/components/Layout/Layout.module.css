@@ -1,0 +1,14 @@
+.layoutWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @mixin dark {
+        border: 1px solid var(--mantine-color-default-border);
+    }
+
+    @mixin light {
+        border: 1px solid var(--mantine-color-default-border);
+    }
+}
+

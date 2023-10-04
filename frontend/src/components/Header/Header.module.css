@@ -1,0 +1,16 @@
+.header {
+    padding: var(--mantine-spacing-xs);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: rem(60px);
+    position: absolute;
+    background-color: var(--mantine-color-body);
+    box-shadow: var(--mantine-shadow-sm);
+
+    @mixin dark {
+        border-bottom: 1px solid var(--mantine-color-default-border);
+        box-shadow: 0 2px 16px 0 var(--mantine-color-dark-9);
+    }
+}

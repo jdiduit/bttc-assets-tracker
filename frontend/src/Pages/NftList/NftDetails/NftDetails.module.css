@@ -1,0 +1,36 @@
+.card {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+    margin: 0 auto;
+
+    @mixin light {
+        background-color: var(--mantine-color-gray-1);
+        border: 2px solid var(--mantine-color-gray-3);
+    }
+
+    @mixin dark {
+        border: 2px solid var(--mantine-color-gray-7);
+    }
+
+    &:hover {
+        box-shadow: var(--mantine-shadow-md);
+    }
+}
+
+.attributeCard {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+    margin: 0 auto;
+
+    @mixin light {
+        background-color: var(--mantine-color-gray-4);
+        border: 2px solid var(--mantine-color-gray-5);
+    }
+
+    @mixin dark {
+        background-color: var(--mantine-color-gray-8);
+        border: 2px solid var(--mantine-color-gray-7);
+    }
+
+    &:hover {
+        box-shadow: var(--mantine-shadow-md);
+    }
+}
