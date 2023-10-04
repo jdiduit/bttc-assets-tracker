@@ -1,0 +1,41 @@
+{
+  "name": "bttc-assets-tracker-server",
+  "scripts": {
+    "dev": "ts-node-dev --no-notify --pretty --respawn --transpile-only src/server",
+    "build": "tsc -p tsconfig.release.json",
+    "start": "ts-node src/server.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.16.1",
+    "apollo-server": "^3.10.0",
+    "bcrypt": "^5.1.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.9",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "http": "^0.0.1-security",
+    "is-what": "^4.1.15",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1",
+    "winston": "^3.10.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.20",
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.3",
+    "@types/morgan": "^1.9.5",
+    "@types/node": "20.6.2",
+    "prisma": "^4.16.1",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}

@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String          @id @default(uuid())
+  username          String          @unique
+  password          String
+  refresh_token     RefreshToken?
+  WalletAddresses   WalletAddress[]
+  selectedChainType String          @default("MAINNET")
+
+  selectedChainId String?
+  selectedChain   Chain?  @relation("SelectedChain", fields: [selectedChainId], references: [id], onDelete: Cascade)
+
+  selectedAddressId String?        @unique
+  selectedAddress   WalletAddress? @relation("SelectedAddress", fields: [selectedAddressId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Chain {
+  id                String   @id @default(uuid())
+  chainId           String
+  name              String
+  rpc               String
+  type              String
+  nativeTokenSymbol String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  profile           User[]   @relation("SelectedChain")
+  tokens            Token[]
+
+  @@unique([chainId, type])
+  @@map("chains")
+}
+
+model RefreshToken {
+  id        String @id @default(uuid())
+  expiresIn Int
+  user      User   @relation(fields: [userId], references: [id])
+  userId    String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("refresh_token")
+}
+
+model WalletAddress {
+  id              String            @id @default(uuid())
+  name            String?
+  address         String
+  userId          String
+  user            User              @relation(fields: [userId], references: [id])
+  profile         User?             @relation("SelectedAddress")
+  TokenAssignment TokenAssignment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("wallet_addresses")
+}
+
+model Token {
+  id                String            @id @default(uuid())
+  name              String
+  address           String
+  walletAssignments TokenAssignment[]
+  symbol            String
+  decimals          String
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  chain             Chain?            @relation(fields: [chainId], references: [id])
+  chainId           String?
+
+  @@unique([address, chainId])
+  @@map("tokens")
+}
+
+model TokenAssignment {
+  id              String        @id @default(uuid())
+  token           Token         @relation(fields: [tokenId], references: [id])
+  tokenId         String
+  walletAddress   WalletAddress @relation(fields: [walletAddressId], references: [id], onDelete: Cascade)
+  walletAddressId String
+  status          String
+  chainType       String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@unique([tokenId, walletAddressId, chainType])
+  @@map("token_assignments")
+}
